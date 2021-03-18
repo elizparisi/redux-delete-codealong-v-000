@@ -1,3 +1,5 @@
+import uuid from 'uuid';
+
 export default function manageTodo(state = {
   todos: [],
 }, action) {
@@ -5,6 +7,11 @@ export default function manageTodo(state = {
   console.log(action)
   switch (action.type) {
     case 'ADD_TODO':
+      
+      const todo = {
+        id: uuid(),
+        text: action.payload.text
+      }
 
       return { todos: state.todos.concat(action.payload.text) };
     
